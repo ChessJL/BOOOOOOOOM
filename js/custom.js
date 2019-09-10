@@ -25,9 +25,9 @@ gs5.addEventListener("click",selectstring);
 gs6.addEventListener("click",selectstring);
 
 
-gs1.addEventListener("click", check);
-gs2.addEventListener("click", check);
-gs3.addEventListener("click", check);
-gs4.addEventListener("click", check);
-gs5.addEventListener("click", check);
-gs6.addEventListener("click", check);
+gs1.addEventListener("click", readstringinfo);
+gs2.addEventListener("click", readstringinfo);
+gs3.addEventListener("click", readstringinfo);
+gs4.addEventListener("click", readstringinfo);
+gs5.addEventListener("click", readstringinfo);
+gs6.addEventListener("click", readstringinfo);

@@ -25,7 +25,7 @@ function draw() {
     fill(255);
   }
   textAlign(CENTER,CENTER);
-  text(checkchrod(),150,50);
+  text(indicator(),150,50);
   console.log(getLoudestFrequency(selected[3],selected[4]));
 }
 
@@ -45,6 +45,10 @@ function getLoudestFrequency(low,high) {
     }
     loudestFreq = largestBin * (halfsampleRate / bins);
     return loudestFreq;
+}
+
+function indicator(){
+
 }
 
 // pitch frequency
@@ -67,7 +71,7 @@ function checkchrod(){
 
 
 //Check user is clicking Guitar string or Ukulele string.
-function check(){
+function readstringinfo(){
   if(this.className === 'gs'){
     if(this.id === freq_gs1[0]){
       selected = freq_gs1;
