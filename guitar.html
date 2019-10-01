@@ -7,21 +7,18 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="manifest" href="/manifest.json">
     <title>Guitar Tuner</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
     <script language="javascript" type="text/javascript" src="js/p5.sound.js"></script>
   </head>
-  <body class="container border-left border-right border-info">
+  <body class="container-fluid">
     <section id="tunersection" class="mx-auto h-100">
       <div class="d-flex justify-content-between text-primary">
         <a href="index.html"><i class="fas fa-chevron-left fa-3x m-4"></i></a>
         <h1 class="m-auto">Guitar</h1>
         <i class="fas fa-info fa-3x m-4" data-toggle="modal" data-target="#tutorial"></i>
       </div>
-      <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
-        Launch demo modal
-      </button> -->
-
       <!-- Modal -->
       <div class="modal fade" id="tutorial" tabindex="-1" role="dialog" aria-labelledby="TutorialTitle" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -35,8 +32,15 @@
             <div class="modal-body">
               <p>1. Select a string</p>
               <p>2. strum the string</p>
-              <p>3. Check the indicator. If it is showing too high, loosen the sting. If it is showing too low, tighten the string.</p>
-              <p>4. If you see the color of the chord turns to green, that will be the correct tune.</p>
+              <p>3. Match the frequency of each string listed below</p>
+              <ul>
+                <li>E6 - 82.41Hz</li>
+                <li>A5 - 110Hz</li>
+                <li>D4 - 146.8Hz</li>
+                <li>G3 - 196Hz</li>
+                <li>B2 - 246.9Hz</li>
+                <li>E1 - 329.6Hz</li>
+              </ul>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -50,7 +54,8 @@
       </div>
 
 
-      <div class="border border-primary m-3 text-center" id="sketch-div"></div>
+      <div class="border border-primary m-3" id="sketch-div"></div>
+
       <div class="h2 d-flex justify-content-between text-primary mt-5 mx-5">
         <span >E6</span>
         <span >A5</span>
