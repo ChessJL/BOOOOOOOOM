@@ -1,3 +1,25 @@
+// Loading sounds for strings
+var e3= new Audio();
+var a3= new Audio();
+var d4= new Audio();
+var g4= new Audio();
+var b4= new Audio();
+var e5= new Audio();
+
+// e3.src="/sounds/e3.mp3";
+// a3.src="/sounds/a3.mp3";
+// d4.src="/sounds/d4.mp3";
+// g4.src="/sounds/g4.mp3";
+// b4.src="/sounds/b4.mp3";
+// e5.src="/sounds/e5.mp3";
+e3.src="https://www.gtdb.org/sounds/guitarmaps/E3.mp3";
+a3.src="https://www.gtdb.org/sounds/guitarmaps/A3.mp3";
+d4.src="https://www.gtdb.org/sounds/guitarmaps/D4.mp3";
+g4.src="https://www.gtdb.org/sounds/guitarmaps/G4.mp3";
+b4.src="https://www.gtdb.org/sounds/guitarmaps/B4.mp3";
+e5.src="https://www.gtdb.org/sounds/guitarmaps/E5.mp3";
+
+// Guitar string
 var gs1=document.getElementById("gs1");
 var gs2=document.getElementById("gs2");
 var gs3=document.getElementById("gs3");
@@ -5,10 +27,18 @@ var gs4=document.getElementById("gs4");
 var gs5=document.getElementById("gs5");
 var gs6=document.getElementById("gs6");
 var gs=document.getElementsByClassName("gs");
+
+//Ukulele string
+var us1=document.getElementById("us1");
+var us2=document.getElementById("us2");
+var us3=document.getElementById("us3");
+var us4=document.getElementById("us4");
+var us=document.getElementsByClassName("us");
+
 var allchord=document.getElementById("allchord");
 var filterchord=document.getElementById("filterchord");
-// each bin equal to 22050/16384 = 1.346 Hz
 
+// each bin equal to 22050/16384 = 1.346 Hz
 //array information['str string name',
 //                  'the lowest correct frequency'
 //                  'the highest correct frequency'
@@ -24,23 +54,44 @@ var freq_gs4 =['gs4',145.5,148,99,119,'D4'];    //146.8
 var freq_gs5 =['gs5',109.5,111,71,91,'A5'];     //110
 var freq_gs6 =['gs6',81.41,83.41,51,71,'E6'];   //82.41
 
+var freq_us1 =['us1',328.5,331,234,254,'A1'];   //329.6
+var freq_us2 =['us2',245,247.5,173,193,'E2'];   //246.9
+var freq_us3 =['us3',195.5,197.5,135,155,'C3']; //196
+var freq_us4 =['us4',145.5,148,99,119,'G4'];    //146.8
+
+
 var selected = [0,0,0,0,0,0];
 var loudestFreq;
 
-gs1.addEventListener("click",selectstring);
-gs2.addEventListener("click",selectstring);
-gs3.addEventListener("click",selectstring);
-gs4.addEventListener("click",selectstring);
-gs5.addEventListener("click",selectstring);
-gs6.addEventListener("click",selectstring);
+if (gs.length!==0) { //check in guitar page or in ukulele page
+  gs1.addEventListener("click",selectstring);
+  gs2.addEventListener("click",selectstring);
+  gs3.addEventListener("click",selectstring);
+  gs4.addEventListener("click",selectstring);
+  gs5.addEventListener("click",selectstring);
+  gs6.addEventListener("click",selectstring);
+
+  gs1.addEventListener("click", readstringinfo);
+  gs2.addEventListener("click", readstringinfo);
+  gs3.addEventListener("click", readstringinfo);
+  gs4.addEventListener("click", readstringinfo);
+  gs5.addEventListener("click", readstringinfo);
+  gs6.addEventListener("click", readstringinfo);
 
 
-gs1.addEventListener("click", readstringinfo);
-gs2.addEventListener("click", readstringinfo);
-gs3.addEventListener("click", readstringinfo);
-gs4.addEventListener("click", readstringinfo);
-gs5.addEventListener("click", readstringinfo);
-gs6.addEventListener("click", readstringinfo);
+}else {
+  us1.addEventListener("click",selectstring);
+  us2.addEventListener("click",selectstring);
+  us3.addEventListener("click",selectstring);
+  us4.addEventListener("click",selectstring);
+
+  us1.addEventListener("click", readstringinfo);
+  us2.addEventListener("click", readstringinfo);
+  us3.addEventListener("click", readstringinfo);
+  us4.addEventListener("click", readstringinfo);
+
+}
+
 
 
 // Indicator
@@ -96,8 +147,19 @@ function readstringinfo(){
     else if (this.id === freq_gs6[0]){
       selected = freq_gs6;
     }
-  }else if (this.className ==='ukulele') {
-
+  }else if (this.className ==='us') {
+    if(this.id === freq_us1[0]){
+      selected = freq_us1;
+    }
+    else if (this.id === freq_us2[0]){
+      selected = freq_us2;
+    }
+    else if (this.id === freq_us3[0]){
+      selected = freq_us3;
+    }
+    else if (this.id === freq_us4[0]){
+      selected = freq_us4;
+    }
   }
 }
 
@@ -126,19 +188,36 @@ function getLoudestFrequency(low,high) {
 // Change color when select the string
 function selectstring(){
   var counter = 0;
-  for (var i = 0; i < gs.length; i++) { //check any string is selected or not.
-    if(gs[i].style.background === "blue"){
-      counter = counter +1;
+  if (this.className === 'gs') {
+    for (var i = 0; i < gs.length; i++) { //check any string is selected or not.
+      if(gs[i].style.background === "blue"){
+        counter = counter +1;
+      }
+    }
+    if (counter == 6 ) {   // no strings have been selected
+      this.style.background = "red";
+    }else{   // one string have been selected
+      for (var i = 0; i < gs.length; i++) {
+        gs[i].style.background = "blue" //change all back to blue
+      }
+      this.style.background = "red";  //change the select one to red
+    }
+  }else if (this.className === 'us') {
+    for (var i = 0; i < us.length; i++) { //check any string is selected or not.
+      if(us[i].style.background === "blue"){
+        counter = counter +1;
+      }
+    }
+    if (counter == 4 ) {   // no strings have been selected
+      this.style.background = "red";
+    }else{   // one string have been selected
+      for (var i = 0; i < us.length; i++) {
+        us[i].style.background = "blue" //change all back to blue
+      }
+      this.style.background = "red";  //change the select one to red
     }
   }
-  if (counter == 6 ) {   // no strings have been selected
-    this.style.background = "red";
-  }else{   // one string have been selected
-    for (var i = 0; i < gs.length; i++) {
-      gs[i].style.background = "blue" //change all back to blue
-    }
-    this.style.background = "red";  //change the select one to red
-  }
+
 }
 
 //Filter for showing chords
@@ -159,4 +238,9 @@ function filter(note){
     filterchord.style.display ="none";
     dropdownMenuButton.innerHTML = 'Show ALL'; //change the dropdownbutton label
   }
+}
+
+
+function playsound(note){
+  note.play();
 }
