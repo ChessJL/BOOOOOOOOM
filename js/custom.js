@@ -6,12 +6,6 @@ var g4= new Audio();
 var b4= new Audio();
 var e5= new Audio();
 
-// e3.src="/sounds/e3.mp3";
-// a3.src="/sounds/a3.mp3";
-// d4.src="/sounds/d4.mp3";
-// g4.src="/sounds/g4.mp3";
-// b4.src="/sounds/b4.mp3";
-// e5.src="/sounds/e5.mp3";
 e3.src="https://www.gtdb.org/sounds/guitarmaps/E3.mp3";
 a3.src="https://www.gtdb.org/sounds/guitarmaps/A3.mp3";
 d4.src="https://www.gtdb.org/sounds/guitarmaps/D4.mp3";
@@ -196,11 +190,14 @@ function selectstring(){
     }
     if (counter == 6 ) {   // no strings have been selected
       this.style.background = "red";
+      this.style.boxShadow = "0px 0px 30px 5px red";
     }else{   // one string have been selected
       for (var i = 0; i < gs.length; i++) {
         gs[i].style.background = "blue" //change all back to blue
+        gs[i].style.boxShadow = "none";
       }
       this.style.background = "red";  //change the select one to red
+      this.style.boxShadow = "0px 0px 30px 5px red";
     }
   }else if (this.className === 'us') {
     for (var i = 0; i < us.length; i++) { //check any string is selected or not.
