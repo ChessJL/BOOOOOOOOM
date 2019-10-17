@@ -1,7 +1,5 @@
 
-html,body {height: 100%; background-color: #00040e; box-sizing:border-box;}
-a:hover{text-decoration: none;}
-
+html,body {height: 100%; background-color: #00040e; box-sizing:border-box; width:500px;margin: auto;}
 img {
   border-radius: 4px;
   padding: 5px;
@@ -10,10 +8,4 @@ img {
 .full-height {
     height: 100%;
     box-sizing:border-box;
-}
-
-@media (min-width: 768px) {
-body a div{max-width: 768px; border-color: yellow;}
-section ul li{list-style: none; float:left; width:33%;}
-section ul li img{padding:35px;height:400px; width:285px;}
 }
