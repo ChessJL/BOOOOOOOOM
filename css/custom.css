@@ -1,16 +1,15 @@
 
-html,body {height: 100%; background-color: #00040e;}
-section{box-sizing:border-box;}
-section ul li{list-style: none; float:left; width:50%; padding:8px;}
-section ul li img{height:225px; width:158px;}
+html,body {height: 100%; background-color: #00040e; box-sizing:border-box;}
 a:hover{text-decoration: none;}
 
-
-
+img {
+  border-radius: 4px;
+  padding: 5px;
+  width: 350px;
+}
 .full-height {
     height: 100%;
     box-sizing:border-box;
-    background-color: red;
 }
 
 @media (min-width: 768px) {
